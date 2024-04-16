@@ -1,2 +1,2 @@
-# mcqueendocumentation.github.io
+# mcqueendocumentation
 Team McQueen Project Documentation 
