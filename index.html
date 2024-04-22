@@ -4,31 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GyroGoGo Documentation</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="gyro.css"> 
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="#" alt="GyroGoGo Logo">
-        </div>
-        <div class="search-bar">
-            <input type="search" placeholder="Search">
-        </div>
-        <div class="hamburger-menu" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
+    <!-- Loading Page -->
+    <div class="loading-page">
+        <div class="car"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-blue-primary py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="hamburger-menu" onclick="toggleMenu()">
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+            </div>
+            <div class="logo">
+                <img src="#" alt="GyroGoGo Logo">
+            </div>
+            <div class="search-bar">
+                <input type="search" placeholder="Search">
+            </div>
         </div>
     </header>
 
+    <!-- Sidebar -->
+    <aside class="sticky" id="sidebar">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="file:///Users/tianadaye/Desktop/gyro/frontend.html">Frontend</a></li>
+                <li><a href="#backend">Backend</a></li>
+                <li><a href="#database">Database</a></li>
+                <li><a href="#endpoints">Endpoints</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
     <main>
-        <h2 id="home">Purpose</h2>
-        <br>
+        <h2 id="home" class="font-bold">Purpose</h2>
         <br>
         <p>The purpose of this Gyrocar scheduling system is to establish a comprehensive system for Gyrogogo, enabling efficient monitoring of our single-passenger gyrocar fleet's location, availability, and usage. The core objectives include acquiring and securely documenting customer data, facilitating rentals from our fleet, and ensuring proper maintenance through continuous tracking of vehicle locations and usage patterns.</p>
+        <br>
+        <h2 id="home" class="font-bold">Development</h2>
+        <br>
+        <p>This project uses React, Node.js, and AWS to effortlessly deploy and test the system. By utilizing React's frontend capabilities alongside AWS's robust infrastructure, we ensure consistent testing and deployment processes, fostering compatibility and reliability across environments.</p>
+        <br>
+        <h2 id="home" class="font-bold">Deployment Plan</h2>
+        <p>
+            <a href="https://docs.google.com/document/d/1aStegVL6UQ6slx0jgEJ_AXMHC5_DbesUT6g8Bk-eqwA/edit?usp=sharing" target="_blank">Deployment Plan</a>
+        </p>        
+        <br>
+        <h2 id="home" class="font-bold">Reservation Logic</h2>
+        <h4>Overview</h4>
+        <br>
+        <p>The reservation system’s core data source is the CarReservation table in the database. This keeps track of each reservation with properties such as scheduledStartDatetime, scheduledEndDatetime, startStationID, endStationID, customerID, and carID.</p>
+        <br>
+        <h4>Searching for Availability</h4>
+        <br>
+        <p>The user will specify the conditions for the reservation regarding the start and end times and the start and end stations. Given those parameters, the system will then use that information to determine what cars will be available. It can do this based on knowing where the cars will end after their reservations. For example, if car one has a reservation that starts at 8 am at station one and ends at 1 pm at station two, we can assume that car one will be available to pick up at station two starting at 2 pm (accounting for the 1-hour charging buffer). The system also considers future reservations of car one and ensures that creating a reservation will not invalidate a future reservation. Besides checking that the times of the reservations do not overlap, it will ensure the continuity of the cars being at the proper stations. If a reservation is scheduled to start at station one, a preceding reservation should not have an ending station that differs from that. However, a reservation that ends at the same station as the next one’s starting station would be allowed.</p>
+        <br>
+        <h4>Conditions for a Valid Reservation</h4>
+        <br>
+        <p>All of the following conditions must be met for a reservation to be considered valid:</p>
+        <ul>
+            <li>The reservation times do not overlap with existing reservations</li>
+            <li>The car will have 1 hour of charging before the reservation starts</li>
+            <li>If applicable, the reservation will end at the starting station of the following reservation</li>
+            <li>The car’s status is Ready</li>
+            <li>The customer’s status is Ready</li>
+            <li>The customer’s email and phone number have been verified</li>
+        </ul>
+        <br>
+       <h4>Reservation Availability Flowchart</h4> 
+       <p>
+        <a href="https://docs.google.com/document/d/1P90in9h-1nuWHkfakhEZa9xZJqOHtOL3Pl9E-l8h-Ow/edit?usp=sharing" target="_blank">Flowchart</a>
+    </p>
     </main>
 
     <script>
+        window.addEventListener('load', function () {
+            setTimeout(function() {
+                var loadingPage = document.querySelector('.loading-page');
+                loadingPage.style.display = 'none';
+            }, 1000); 
+        });
+
         function toggleMenu() {
             var sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('nav-active');
@@ -36,3 +100,4 @@
     </script>
 </body>
 </html>
+

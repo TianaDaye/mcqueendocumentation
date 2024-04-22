@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Documentation</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header {
+            background-color: #000180;
+        }
+
+        header h1 {
+            color: #ffffff;
+        }
+
+        section {
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        section h2 {
+            color: #000180;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            color: #666666;
+        }
+
+        footer {
+            background-color: #000180;
+            color: #ffffff;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100 text-gray-900">
+    <!-- Header -->
+    <header class="bg-blue-primary py-4">
+        <div class="container mx-auto">
+            <h1 class="text-white text-2xl font-bold text-center">Frontend Documentation</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto py-8">
+        <!-- General Guidelines -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">General Guidelines</h2>
+            <ul class="list-disc ml-4">
+                <li>Tailwind CSS Custom Styles</li>
+                <P>References</P>
+                <li>
+                    <a href="https://tailwindcss.com/docs/font-family#customizing-your-theme ">Font Family</a>
+                </li>
+                <li>
+                    <a href="https://tailwindcss.com/docs/customizing-colors#using-custom-colors">Customizing Colors</a>
+                </li>
+            </ul>
+            <br>
+            <p>The typographic scale and color palette was added to the tailwind.config file. These styles can be easily accessed in the css classes. </p>
+            <br>
+            <ul class="list-disc ml-4">
+                <li>Typography:</li>
+                <ul>
+                    <li><p>Sm: 14px, 400pt</p></li>
+                    <li><p>Body: 16x, 400pt</p></li>
+                    <li><p>Card-title: 20px, 600pt</p></li>
+                    <li><p>Subhead: 24px, 600pt</p></li>
+                    <li><p>Section-head: 36px, 600pt</p></li>
+                    <li><p>Hero: 72px, 800pt</p></li>  
+                </ul>
+            </ul>
+            <br>
+            <ul class="list-disc ml-4">
+                <li>Colors:</li> <!-- add colors -->
+                <ul>
+                    <li><p>Blue-primary: #000180</p></li>
+                    <li><p>Blue-primary-accent: #4a4cda</p></li>
+                    <li><p>Teal-secondary: #33adad</p></li>
+                    <li><p>Purple: #9d9dd9</p></li>
+                    <li><p>Purple-accent: #f2f2ff</p></li>
+                    <li><p>Black: #ffffff</p></li>  
+                    <li><p>Gray5: #eae9e9</p></li>  
+                    <li><p>Gray4: #cccccc</p></li>  
+                    <li><p>Gray3: #b2b2b2</p></li>  
+                    <li><p>Gray2: #999999</p></li>  
+                    <li><p>Gray1: #8a8a8e</p></li>  
+                    <li><p>Body-copy: #666666</p></li>  
+                    <li><p>Border: #c6c6c8</p></li>  
+                </ul>
+            </ul>
+        </section>
+
+        <!-- Material UI Components -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">Material UI Components</h2>
+            <p>The Material UI (MUI) React library contains many prebuilt components that sped up our development process.</p>
+            <br>
+            <UL>
+                <li>
+                    <a href="https://mui.com/material-ui/all-components/"> Material UI components</a>
+                </li>
+                <li>
+                    <a href="https://mui.com/material-ui/getting-started/"> Material UI - Overview</a>
+                </li>
+            </UL>
+            <br>
+            <p>There are many easy-to-follow code examples for each component. This app primarily uses their input components, such as Text Fields, Select Menus, and Buttons, as well as Tables and Dialog boxes.  </p>
+        </section>
+
+        <!-- API Usage -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">API Usage</h2>
+            <p>All api calls go to api.mcqueen-gyrocar.com using HTTP Axios post, put, patch, get, and delete requests.</p>
+            <a href="https://axios-http.com/">HTTP Axios</a>
+            <!-- Add more content here -->
+        </section>
+
+        <!-- Navigation and User Authentication -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">Navigation and User Authentication</h2>
+            <p>This logic is complex, and we wanted to fully document it out.</p>
+            <p>BrowserRouter, Routes, Outlet, and Layout: </p>
+            <a href="https://www.w3schools.com/react/react_router.asp"></a>
+            <br>
+            <p class="font-bold">Layout.js</p>
+            <ul>
+                <li><p>Contains conditional rendering </p></li>
+                <li><p>Each layout contains its respective nav bar, and an Outlet tag. The component defined in the associated route is ‘plugged in’ to the outlet tag.</p></li>
+                <li><p>The Route components are nested within a Layout component that manages the overall layout, including the header and is conditioned on the user's authentication and role.</p></li>
+            </ul>
+            <br>
+            <p class="font-bold">UseAuth Hook - User Context</p>
+            <ul>
+                <li><p>The useAuth hook accesses the authentication context, which provides user and logout functions.  </p></li>
+                <li><p>This hook refreshes and re authenticates the user when necessary</p></li>
+            </ul>
+            <br>
+            <p class="font-bold">Navigation.js</p>
+            <ul>
+                <li><p>Called by App.js, nested within BrowserRouter, using React Router</p></li>
+                <li><p>It is the central routing mechanism for the entire application.</p></li>
+                <li><p>It ensures that the application can dynamically render different components based on the user's status and interactions with the app. </p></li>
+                <li><p>It handles:</p></li>
+                    <ul>
+                        <li><p>User authentication</p></li>
+                        <li><p>Role-based access control</p></li>
+                        <li><p>Session management</p></li>
+                        <li><p>User inactivity</p></li>
+                    </ul>
+                <li><p>UseNavigate controls navigation, and useLocation controls the current URL path. </p></li>
+                <li><p>A state employeeRoleNum stores the employee's role from session storage.</p></li>
+                <li><p>It can set an employee's role number (setEmployeeRoleNum) which affects the accessibility of various routes within the app based on their role.</p></li>
+                <li><p>An InactivityDetector component is used to log out the user after a specified period of inactivity.</p></li>
+                <li><p>Uses useEffect to update and recall the last location visited that isn't related to a reservation process. This is used for redirecting the user back to their last non-reservation-related page..</p></li>
+                <ul>
+                    <li><p>This is to ensure the page location persists on an event such as a page refresh</p></li>
+                </ul>
+            <li><p>A set of Route components defines the URL paths and their corresponding React components. </p></li>
+                <ul>
+                    <li><p>These include Public Routes: Home, Login, Email Verification, Registration, and informational pages (FAQ, Contact, About Us). </p></li>
+                    <li><p>Protected Routes: These routes require authentication and are wrapped in a ProtectedRoute component. They include user profiles and reservation-related pages.</p></li>
+                    <li><p>Employee Routes: Wrapped in an EmployeeRoute component, these routes are accessible only to users with specific employee roles. They include dashboards and management tools for different aspects of the business, such as fleet, employees, customer approvals, etc.</p></li>
+                </ul>
+            <li><p>Based on employeeRoleNum, certain routes will render either the intended component or a fallback Unauthorized component if the user's role does not grant them access.</p></li>
+            <li><p>If users access a path they have previously visited, they are redirected back to that path, ensuring they return to the last relevant context.</p></li>
+            <li><p>Defines a state for if the user is logged in, and a function to change this state (isLoggedIn). </p></li>
+            <li><p>Default route calls the Layout component with the isLoggedIn function as a property</p></li>
+            <ul>
+                <li><p>This function will be used to pass the isLoggedIn state from child component (Login) to the parent component (Navigation) </p></li>
+            </ul>
+            </ul>
+        </section>
+
+        <!-- Front End File Structure -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">Front End File Structure</h2>
+            <p>* BOLDED - Directory</p>
+            <!-- Add more content here -->
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-primary py-4">
+        <div class="container mx-auto text-white text-center">
+            &copy; Team McQueen Documentation. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>
