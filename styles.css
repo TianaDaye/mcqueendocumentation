@@ -1,4 +1,7 @@
+/* Header Layout */
 header {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
     background-color: #f8f9fa;
     padding: 20px;
     text-align: center;
@@ -7,53 +10,64 @@ header {
     width: 100%;
 }
 
-/* search bar and want to add logo */
+.logo {
+    grid-column: 1 / 2;
+    align-self: center;
+}
+
+.logo img {
+    height: 40px;
+}
+
 .search-bar {
-    float: left;
+    grid-column: 2 / 3;
     margin-right: 20px;
 }
 
-/* side menu */
-aside {
-    background-color: #e9ecef;
-    padding: 20px;
-    position: fixed;
-    top: 60px;
-    bottom: 0;
-    width: 200px;
+.hamburger-menu {
+    grid-column: 3 / 4;
+    align-self: center;
+    display: none;
 }
 
-/* table of contents */
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #333;
+}
+
+/* Main Content Layout */
+main {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "content toc"
+        "content toc";
+    padding: 20px;
+    margin-left: 220px;
+    margin-top: 100px; /* Adjusted to accommodate the header and hamburger menu */
+    padding-top: 20px; /* Added to create space for the header */
+}
+
+main > * {
+    grid-area: content;
+}
+
+aside.sticky {
+    grid-area: toc;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px; /* Adjusted to accommodate the header */
+}
+
+/* Table of Contents */
 nav {
     margin-top: 20px;
 }
 
 nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    margin-bottom: 10px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #343a40;
-}
-
-
-main {
-    padding: 20px;
-    margin-left: 220px;
-    margin-top: 60px; /* Added to align with the header */
-    padding-top: 20px; /* Added to create space for the header */
-}
-
-
-/* Style the scrolling table of contents */
-aside.sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 60px;
+    list-style-type: none;  
 }
