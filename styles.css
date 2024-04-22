@@ -1,8 +1,16 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #000; /* Default text color */
+}
+
 /* Header Layout */
 header {
     display: grid;
-    grid-template-columns: auto auto 1fr;
-    background-color: #f8f9fa;
+    grid-template-columns: auto 1fr auto;
+    background-color: #000180;
     padding: 20px;
     text-align: center;
     position: fixed;
@@ -24,10 +32,18 @@ header {
     margin-right: 20px;
 }
 
+.search-bar input[type="search"] {
+    width: 200px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
 .hamburger-menu {
     grid-column: 3 / 4;
     align-self: center;
-    display: none;
+    cursor: pointer;
 }
 
 .hamburger-menu span {
@@ -35,7 +51,7 @@ header {
     width: 25px;
     height: 3px;
     margin: 5px auto;
-    background-color: #333;
+    background-color: #fff;
 }
 
 /* Main Content Layout */
@@ -47,9 +63,8 @@ main {
         "content toc"
         "content toc";
     padding: 20px;
-    margin-left: 220px;
-    margin-top: 100px; /* Adjusted to accommodate the header and hamburger menu */
-    padding-top: 20px; /* Added to create space for the header */
+    margin-top: 100px;
+    padding-top: 20px;
 }
 
 main > * {
@@ -60,7 +75,7 @@ aside.sticky {
     grid-area: toc;
     position: -webkit-sticky;
     position: sticky;
-    top: 100px; /* Adjusted to accommodate the header */
+    top: 100px;
 }
 
 /* Table of Contents */
@@ -69,5 +84,24 @@ nav {
 }
 
 nav ul {
-    list-style-type: none;  
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin-bottom: 10px;
+}
+
+nav ul li a {
+    color: #fff; /* Link color */
+    text-decoration: none;
+}
+
+.nav-active {
+    display: block !important;
+}
+
+/* Change nav bar heading color */
+header h1 {
+    color: #33adad;
 }
