@@ -115,6 +115,43 @@
         nav ul {
             list-style-type: none;
         }
+
+        .hamburger-menu {
+            cursor: pointer;
+        }
+        
+        .menu-bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #fff;
+            transition: transform 0.3s ease; 
+        }
+        
+        .nav-active .menu-bar:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .nav-active .menu-bar:nth-child(2) {
+            opacity: 0; 
+        }
+        
+        .nav-active .menu-bar:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        /* Styling for links in the hamburger menu */
+        #sidebar nav ul li a {
+            color: #33adad; /* Link color */
+            text-decoration: none;
+            transition: color 0.3s ease; 
+        }
+        
+        #sidebar nav ul li a:hover {
+            color: #ddd; 
+        }
+        
     </style>
 </head>
 <body>
