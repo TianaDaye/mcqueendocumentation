@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Documentation</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header {
+            background-color: #000180;
+        }
+
+        header h1 {
+            color: #ffffff;
+        }
+
+        section {
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        section h2 {
+            color: #000180;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            color: #666666;
+        }
+
+        footer {
+            background-color: #000180;
+            color: #ffffff;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100 text-gray-900">
+    <!-- Header -->
+    <header class="bg-blue-primary py-4">
+        <div class="container mx-auto">
+            <h1 class="text-white text-2xl font-bold text-center">Frontend Documentation</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto py-8">
+        <!-- General Guidelines -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">General Guidelines</h2>
+            <ul class="list-disc ml-4">
+                <li>Tailwind CSS Custom Styles</li>
+                <P>References</P>
+                <li>
+                    <a href="https://tailwindcss.com/docs/font-family#customizing-your-theme ">Font Family</a>
+                </li>
+                <li>
+                    <a href="https://tailwindcss.com/docs/customizing-colors#using-custom-colors">Customizing Colors</a>
+                </li>
+            </ul>
+            <br>
+            <p>The typographic scale and color palette was added to the tailwind.config file. These styles can be easily accessed in the css classes. </p>
+            <br>
+            <ul class="list-disc ml-4">
+                <li>Typography:</li>
+                <ul>
+                    <li><p>Sm: 14px, 400pt</p></li>
+                    <li><p>Body: 16x, 400pt</p></li>
+                    <li><p>Card-title: 20px, 600pt</p></li>
+                    <li><p>Subhead: 24px, 600pt</p></li>
+                    <li><p>Section-head: 36px, 600pt</p></li>
+                    <li><p>Hero: 72px, 800pt</p></li>  
+                </ul>
+            </ul>
+            <br>
+            <ul class="list-disc ml-4">
+                <li>Colors:</li> <!-- add colors -->
+                <ul>
+                    <li><p>Blue-primary: #000180</p></li>
+                    <li><p>Blue-primary-accent: #4a4cda</p></li>
+                    <li><p>Teal-secondary: #33adad</p></li>
+                    <li><p>Purple: #9d9dd9</p></li>
+                    <li><p>Purple-accent: #f2f2ff</p></li>
+                    <li><p>Black: #ffffff</p></li>  
+                    <li><p>Gray5: #eae9e9</p></li>  
+                    <li><p>Gray4: #cccccc</p></li>  
+                    <li><p>Gray3: #b2b2b2</p></li>  
+                    <li><p>Gray2: #999999</p></li>  
+                    <li><p>Gray1: #8a8a8e</p></li>  
+                    <li><p>Body-copy: #666666</p></li>   
+                    <li><p>Border: #c6c6c8</p></li>  
+                </ul>
+            </ul>
+        </section>
+
+        <!-- Material UI Components -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">Material UI Components</h2>
+            <p>The Material UI (MUI) React library contains many prebuilt components that sped up our development process.</p>
+            <br>
+            <UL>
+                <li>
+                    <a href="https://mui.com/material-ui/all-components/"> Material UI components</a>
+                </li>
+                <li>
+                    <a href="https://mui.com/material-ui/getting-started/"> Material UI - Overview</a>
+                </li>
+            </UL>
+            <br>
+            <p>There are many easy-to-follow code examples for each component. This app primarily uses their input components, such as Text Fields, Select Menus, and Buttons, as well as Tables and Dialog boxes.  </p>
+        </section>
+
+        <!-- API Usage -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">API Usage</h2>
+            <p>All api calls go to api.mcqueen-gyrocar.com using HTTP Axios post, put, patch, get, and delete requests.</p>
+            <a href="https://axios-http.com/">HTTP Axios</a>
+            <!-- Add more content here -->
+        </section>
+
+        <!-- Navigation and User Authentication -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">Navigation and User Authentication</h2>
+            <p>This logic is complex, and we wanted to fully document it out.</p>
+            <p>BrowserRouter, Routes, Outlet, and Layout: </p>
+            <a href="https://www.w3schools.com/react/react_router.asp"></a>
+            <br>
+            <p class="font-bold">Layout.js</p>
+            <ul>
+                <li><p>Contains conditional rendering </p></li>
+                <li><p>Each layout contains its respective nav bar, and an Outlet tag. The component defined in the associated route is ‘plugged in’ to the outlet tag.</p></li>
+                <li><p>The Route components are nested within a Layout component that manages the overall layout, including the header and is conditioned on the user's authentication and role.</p></li>
+            </ul>
+            <br>
+            <p class="font-bold">UseAuth Hook - User Context</p>
+            <ul>
+                <li><p>The useAuth hook accesses the authentication context, which provides user and logout functions.  </p></li>
+                <li><p>This hook refreshes and re authenticates the user when necessary</p></li>
+            </ul>
+            <br>
+            <p class="font-bold">Navigation.js</p>
+            <ul>
+                <li><p>Called by App.js, nested within BrowserRouter, using React Router</p></li>
+                <li><p>It is the central routing mechanism for the entire application.</p></li>
+                <li><p>It ensures that the application can dynamically render different components based on the user's status and interactions with the app. </p></li>
+                <li><p>It handles:</p></li>
+                    <ul>
+                        <li><p>User authentication</p></li>
+                        <li><p>Role-based access control</p></li>
+                        <li><p>Session management</p></li>
+                        <li><p>User inactivity</p></li>
+                    </ul>
+                <li><p>UseNavigate controls navigation, and useLocation controls the current URL path. </p></li>
+                <li><p>A state employeeRoleNum stores the employee's role from session storage.</p></li>
+                <li><p>It can set an employee's role number (setEmployeeRoleNum) which affects the accessibility of various routes within the app based on their role.</p></li>
+                <li><p>An InactivityDetector component is used to log out the user after a specified period of inactivity.</p></li>
+                <li><p>Uses useEffect to update and recall the last location visited that isn't related to a reservation process. This is used for redirecting the user back to their last non-reservation-related page..</p></li>
+                <ul>
+                    <li><p>This is to ensure the page location persists on an event such as a page refresh</p></li>
+                </ul>
+            <li><p>A set of Route components defines the URL paths and their corresponding React components. </p></li>
+                <ul>
+                    <li><p>These include Public Routes: Home, Login, Email Verification, Registration, and informational pages (FAQ, Contact, About Us). </p></li>
+                    <li><p>Protected Routes: These routes require authentication and are wrapped in a ProtectedRoute component. They include user profiles and reservation-related pages.</p></li>
+                    <li><p>Employee Routes: Wrapped in an EmployeeRoute component, these routes are accessible only to users with specific employee roles. They include dashboards and management tools for different aspects of the business, such as fleet, employees, customer approvals, etc.</p></li>
+                </ul>
+            <li><p>Based on employeeRoleNum, certain routes will render either the intended component or a fallback Unauthorized component if the user's role does not grant them access.</p></li>
+            <li><p>If users access a path they have previously visited, they are redirected back to that path, ensuring they return to the last relevant context.</p></li>
+            <li><p>Defines a state for if the user is logged in, and a function to change this state (isLoggedIn). </p></li>
+            <li><p>Default route calls the Layout component with the isLoggedIn function as a property</p></li>
+            <ul>
+                <li><p>This function will be used to pass the isLoggedIn state from child component (Login) to the parent component (Navigation) </p></li>
+            </ul>
+            </ul>
+        </section>
+
+        <!-- Front End File Structure -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">Front End File Structure</h2>
+            <p>* BOLDED - Directory</p>
+            <br>
+            <p class="font-bold">Assets</p>
+            <ul>
+                <li><p>Images used across the site - these were provided by the client.</p></li>
+            </ul>
+            <p class="font-bold">Customer-Pages</p>
+            <ul>
+                <li><p>About-Us.js</p></li>
+                    <ul>
+                        <li><p>Displays the information provided by the client. Contains a call to action to sign up.</p></li>
+                    </ul>
+                <li><p>Contact.js</p></li>
+                <ul>
+                    <li><p>Uses the ContactForm component to allow users to submit any inquiries pertaining to vehicles, general questions, general feedback and website feedback.</p></li>
+                    <li><p>Sends data to the API in order to display the inquiry to customer service.</p></li>
+                </ul>
+                <li><p>Faq.js</p></li>
+                <ul>
+                    <li><p>Displays the FAQ provided by the clients in an MUI Accordion component</p></li>
+                    <li><p>Utilizes the ContactForm again in case users have additional questions. </p></li>
+                    <a class="underline" href="https://mui.com/material-ui/react-accordion/">MUI Accordion</a>
+                </ul>
+                <li><p>FormConfirmation.js</p></li>
+                <ul>
+                    <li><p>Provides confirmation after a user creates an account successfully. They are automatically redirected here after their account information has been successfully posted to the API. </p></li>
+                </ul>
+                <li><p>Homepage.js</p></li>
+                <ul>
+                    <li><p>Call to action button to redirect users to signup. </p></li>
+                    <li><p>Displays steps to creating an account and reserving a Gyrocar using the HowItWorks component.</p></li>
+                    <li><p>Displays promotional content provided by the clients </p></li>
+                </ul>
+                <li><p>Login.js</p></li>
+                <ul>
+                    <li><p>Contains a useEffect hook to determine where the user should be directed to after login</p></li>
+                    <ul>
+                        <li><p>Uses the UseAuth() user to test is user is an employee or not</p></li>
+                        <li><p>If the user is an employee, they navigate to their dashboard</p></li>
+                        <li><p>If the user is a customer, they navigate to the reservation page</p></li>
+                        <li><p>Sets the sessionStorage item ‘role’ to the user role</p></li>
+                    </ul>
+                    <li><p>
+                        Has a form using <a class="underline" href="https://mui.com/material-ui/react-text-field/">MUI Textfields</a> to collect the username and password. 
+                    </p></li>
+                    <li><p>On submit, the username and password are posted to the API and validated. If the combination is incorrect, the users will see an error message informing them to try again. </p></li>
+                </ul>
+                <li><p>Profile.js</p></li>
+                <ul>
+                    <li><p>Checks whether the user is an employee or a customer, and renders the correct UI</p></li>
+                    <li><p>Customer Profile</p></li>
+                    <ul>
+                        <li><p>The user ID, Name, Email, and Phone Number are accessed from the UseAuth() hook</p></li>
+                        <li><p>This information is displayed to the left hand side of the page, and the email and phone number can be edited.</p></li>
+                        <li><p>An API call is made to access all reservations tied to the customer's ID. These are displayed to the right hand side of the page, and the upcoming reservations are tagged with an ‘Upcoming’ flag. </p></li>
+                    </ul>
+                    <li><p>Employee Profile</p></li>
+                    <ul>
+                        <li><p>Employee information is accessed via the useAuth() hook, and they can view their Name, Employee Number, Email, and Role. </p></li>
+                    </ul>
+                </ul>
+                <li><p>Register.js</p></li>
+                <ul>
+                    <li><p>This is the gateway to the sign up form. The Form component is wrapped in the FormProvider component from FormContext. </p></li>
+                </ul>
+                <li><p>Reservation.js</p></li>
+                <ul>
+                    <li><p>This file contains the form to search for a reservation. <a class="underline" href="https://mui.com/material-ui/react-menu/">Select Menus</a> are used to select start and end stations, and <a class="underline" href="https://mui.com/x/react-date-pickers/date-time-picker/">Date Time Pickers </a>are used for start and end date selections. </p></li>
+                    <li><p>Input is validated by ensuring the end date is after the start date, and that both dates are in the future. </p></li>
+                    <li><p>The MapResults component switches between rendering just the MapComponent, or the MapComponent with search results for available cars. If the search button is hit, and the input is validated, the results section is rendered. </p></li>
+                    <li><p>The search query is sent to the API, and the response returns available cars based on the query. This data is passed down from the Reservation page to the MapResults component as a parameter, in order to render the results.</p></li>
+                    <li><p>When the Result card is clicked, the selected reservation data is passed through the URL parameters using <a class="underline" href="https://reactrouter.com/en/main/hooks/use-navigate">UseNavigate</a> from React-Router-Dom to the ReservationDetails page.</p></li>
+                </ul>
+                <li><p>ReservationConfirmation.js</p></li>
+                <ul>
+                    <li><p>After the reservation is processed and there is a 200 status from the API after posting the reservation, the user is navigated to the ReservationConfirmation page using UseNavigate. </p></li>
+                </ul>
+                <li><p>ReservationDetails.js</p></li>
+                <ul>
+                    <li><p>This page takes in the selected reservation details from the URL parameters using <a class="underline" href="https://reactrouter.com/en/main/hooks/use-location">useLocation</a> from React-Router-Dom. </p></li>
+                    <li><p>The details are displayed and the user has a select menu to choose their card for payment. The cards are displayed by making an API call for the card ID that is associated with <a class="underline" href="https://stripe.com/?utm_campaign=US_en_Search_Brand_Stripe_EXA-20839462206&utm_medium=cpc&utm_source=google&ad_content=683853401230&utm_term=stripe&utm_matchtype=e&utm_adposition=&utm_device=c&gad_source=1&gclid=CjwKCAjwoPOwBhAeEiwAJuXRh2fiTW0ymQIBCUwYuKpRRbyVYFRJhEO5yWFPRV8v1gl8onDls9EpFxoCdRkQAvD_BwE">Stripe</a>.</p></li>
+                </ul>
+                <li><p>Unauthorized.js</p></li>
+                <ul>
+                    <li><p>This page shows the 403 error if any user tries to access a URL that they are not authorized to view. The Navigation.js, ProtectedRoute.js, and EmployeeRoute.js handle this logic. </p></li>
+                </ul>
+                <li><p>VerifyEmailPage.js</p></li>
+                <ul>
+                    <li><p>It verifies a user's email through a token passed via the URL query parameters.</p></li>
+                    <li><p>The query parameters are accessed using new URLSearchParams(location.search), and the email verification token is retrieved.</p></li>
+                    <li><p>If no token is found, an alert notifies the user, and they are redirected to the home page (navigate('/')).</p></li>
+                    <li><p>If a token is provided, an API request is made using axios.get to a constructed URL containing the token as a query parameter. </p></li>
+                    <li><p>If the response status is 200 (HTTP OK), it implies the email was successfully verified, and the user is redirected to a confirmation page (navigate('/registration-confirmation')).</p></li>
+                    <li><p>If the response status is not 200, an alert with an error message derived from the response is shown, followed by a redirection to the home page.</p></li>
+                    <li><p>If the API request fails (e.g., due to network issues), an error is logged, an error message is displayed, and the user is redirected to the home page.</p></li>
+                    <li><p>The component renders a simple "Loading..." message while the email verification process is ongoing.</p></li>
+                </ul>
+                <p class="font-bold">Customer-Components (Sub components that make up the Customer-Pages)</p>
+                <ul>
+                    <li><p>Contact-Form.js</p></li>
+                    <ul>
+                        <li><p>Using <a class="underline" href="https://mui.com/material-ui/react-text-field/">MUI Textfields</a> and <a class="underline" href="https://mui.com/material-ui/react-menu/">Select Menus</a>, users can submit their inquiry. Data is saved from the form, and sent to the API upon submit. </p></li>
+                        <li><p>Emails are sent to the user after submitting the inquiry from the backend.</p></li>
+                    </ul>
+                    <li><p>MapResults.js</p></li>
+                    <li><p>HowItWorks.js</p></li>
+                    <li><p>MapComponent.js</p></li>
+                </ul>
+            </ul>
+            <p class="font-bold">Context</p>
+            <ul>
+                <li><p>AuthContext.js</p></li>
+                <ul>
+                    <li><p>Authenticates the user and saves user data upon login</p></li>
+                    <li><p>Reauthenticate and save user data after page refresh</p></li>
+                    <li><p>Contains login and logout functions</p></li>
+                    <li><p>Can be accessed on all pages with the useAuth hook specified in the file.</p></li>
+                    <li><p>Allows all pages to access user data for authentication, permissions, and data display purposes.</p></li>
+                </ul>
+                <li><p>FormContext.js</p></li>
+                <ul>
+                    <li><p>Saves all user inputted data throughout the three pages of the form. (Customer information, driver’s license, credit card)</p></li>
+                    <li><p>Keeps track of the current page and user state</p></li>
+                    <li><p>Checks each page for errors and validates input before continuing to the next page</p></li>
+                    <li><p>Handles if the user can submit</p></li>
+                </ul>
+            </ul>
+            <p class="font-bold">Data</p>
+            <ul>
+                <li><p>faq-data.js </p></li>
+                <ul>
+                    <li><p>Questions and answers for the FAQ questions, so they can be mapped through on the FAQ page. This content was provided by the client. </p></li>
+                </ul>
+                <li><p>state-list.js</p></li>
+                <ul>
+                    <li><p>List of the 50 states, so they can be mapped through as Menu Items in the state select menu for a Customer’s Driver’s License info.</p></li>
+                </ul>
+            </ul>
+            <p class="font-bold">Employee-dashboards</p>
+            <ul>
+                <li><p>Full-Dashboard.js</p></li>
+                <ul>
+                    <li><p>Uses the employee role id from useAuth() hook to determine which dashboard to show with conditional rendering and if statements. </p></li>
+                    <ul>
+                        <li><p>Admin = 1, Customer Service = 2, Mechanic = 3, Manager = 4</p></li>
+                    </ul>
+                    <li><p>Displays a DashCard for each piece of information. These cards are wrapped in a Link component from React-Router-Dom to navigate the user to the correct details page.</p></li>
+                </ul>
+                <li><p>MetricsDashboard.js</p></li>
+                <ul>
+                    <li><p>Displays MetricsDashCard for both type of metrics - Application and Rental. These cards are also wrapped in a Link component to take the user to the correct URL after clicking on a card. </p></li>
+                </ul>
+            </ul>
+            <p class="font-bold">Employee-Pages</p>
+            <ul>
+                <li><p>CustomerServiceFunctions.js</p></li>
+                <ul>
+                    <li><p>Contains <a class="underline" href="https://mui.com/material-ui/react-tabs/">MUI Tabs </a>for each Customer Service page - Approval Requests, Customer Inquiries, Members Info. </p></li>
+                    <li><p>The URL for this page contains a tab param, which is accessed using the useParams function from React-Router-Dom. This number determines which tab the page should be on depending on the selected DashCard. </p></li>
+                </ul>
+                <li><p>EmployeeManagement.js</p></li>
+                <ul>
+                    <li><p>This page contains a <a class="underline" href="https://mui.com/material-ui/react-table/">MUI Table</a> for display all employees.</p></li>
+                    <li><p>Sorting, searching, and pagination is done on the backend within the API request to getEmployees. When a user sorts, searches, or goes to a new page, a new API request to get the Employees is executed.</p></li>
+                    <li><p>Admins have the ability to add an Employee, which opens a <a class="underline" href="https://mui.com/material-ui/react-dialog/">Dialog Box</a>. Once the Admin fills out the required information, the data is sent to the API to create a new employee. </p></li>
+                    <li><p>Admins can also edit employees in a dialog box, or delete an employee. They will get a confirmation dialog box before the Employee is fully deleted. </p></li>
+                    <li><p>Managers can view all employees, but they cannot edit, create, or delete them. This is determined by their role from the useAuth hook</p></li>
+                </ul>
+                <li><p>FleetManagement.js</p></li>
+                <ul>
+                    <li><p>Stations:</p></li>
+                    <ul>
+                        <li><p>UseEffect hook is called to get stations on page load, and will be run every time the number of stations changes</p></li>
+                        <li><p>Admins can add, delete, or edit stations. Each action opens a MUI Dialog Box for data input or for confirmation. </p></li>
+                        <li><p>Adding a station - Dialog box opens, and the submit button is disabled until all fields are filled out. When the user submits, the station is added to the database via an API post request. </p></li>
+                    </ul>
+                </ul>
+                <li><p>ApplicationMetrics.js</p></li>
+                <ul>
+                    <li><p>It is used to fetch and display application metrics based on certain parameters.</p></li>
+                    <li><p>A useEffect hook triggers the fetchData function whenever startDate, endDate, statusCode, sortField, or sortOrder changes.</p></li>
+                    <li><p>The fetchData function makes a POST request using Axios to a specified endpoint with the state variables as parameters. It also includes credentials with the request.</p></li>
+                    <li><p>If the request is successful, the response data (metrics) is stored in the data state. If there is an error during the fetch, it is logged to the console.</p></li>
+                    <li><p>A TableContainer houses a Table that displays the fetched data. Each row shows the month, status code, and count from the data array.</p></li>
+                    <li><p>Descriptions for each status code are provided at the bottom in a Typography component for clarity.</p></li>
+                </ul>
+                <li><p>RentalMetrics.js</p></li>
+                <ul>
+                    <li><p>It is a self-contained dashboard for visualizing rental metrics data based on user-selected criteria. </p></li>
+                    <li><p>startDate and endDate are used to store date values for filtering the rental metrics data.</p></li>
+                    <li><p>sortField determines the field used for sorting the data and is initialized to 'reservationDate'.</p></li>
+                    <li><p>sortOrder determines the direction of sorting ('asc' for ascending or 'desc' for descending) and is initialized to 'asc'.</p></li>
+                    <li><p>An effect hook (useEffect) is used to trigger data fetching whenever startDate, endDate, sortField, or sortOrder changes.</p></li>
+                    <li><p>Inside useEffect, a function fetchData is defined and called immediately. It checks if both startDate and endDate are provided. If so, it makes an HTTP GET request using axios to fetch data from a constructed URL.</p></li>
+                    <li><p>Upon successful data fetching, the reservations state is updated with the fetched data. If an error occurs, it logs the error to the console.</p></li>
+                    <li><p>A table displays the fetched rental metrics, sorted and filtered based on user input. Each row shows details for a reservation, including date, station ID, and counts for completed, current, in-progress, and total reservations.</p></li>
+                    <li><p>A Typography component displays a key for station IDs, mapping them to specific locations.</p></li>
+                </ul>
+            </ul>
+           <p class="font-bold">Employee-Components </p>
+           <ul>
+            <li><p> ApprovalDetails.js</p></li>
+            <ul>
+                <li><p>The customer ID is taken from the URL using useParams from React-Router-Dom. </p></li>
+                <li><p>The customer application is displayed, and the customer service employee can choose to approve the customer, suspend the customer, or save and exit.</p></li>
+                <li><p>Approving the customer changes their status code to RDY through a patch request, and verifies their phone and email.</p></li>
+                <li><p>Suspending the customer changes their status code to SPD through a patch request</p></li>
+                <li><p>Saving and exiting keeps the status code as “PVN”</p></li>
+            </ul>
+            <li><p>ApprovalRequests.js</p></li>
+            <ul>
+                <li><p>There are two MUI tables, New Requests and Completed Requests</p></li>
+                <li><p>All customers are returned from an API get request, and are mapped through on each table. For the New Requests table, customers are displayed if their statusCode = “PVN” (Pending Verification). For the Completed Requests Table, customers are displayed if their statusCode = “RDY” (Ready to Rent)</p></li>
+                <li><p>When the ‘Manage” button is clicked on the New Requests table, the associated customer ID is sent through the URL to ApprovalDetails.js</p></li>
+                <li><p>When the “View Details” button is clicked in the Completed table, the associated customer ID is sent through the URL to CustomerDetails.js</p></li>
+            </ul>
+            <li><p>CustomerDetails.js</p></li>
+            <ul>
+                <li><p>Displays customer details and their past and upcoming reservations, based on their CustomerID that was passed through the URL params.</p></li>
+            </ul>
+            <li><p>CustomerInquiries.js</p></li>
+            <li><p>DashCard.js</p></li>
+            <ul>
+                <li><p>Basic component that takes in the display statistic and captions of each piece of information displayed on the dashboard. Serves as a link to the corresponding page.</p></li>
+            </ul>
+            <li><p>MembersInfo.js</p></li>
+            <ul>
+                <li><p>Table of all customers, sortable, searchable, and paginated like the EmployeeManagement tables. </p></li>
+                <li><p>All members with status codes of “RDY”, “BND”, and “SPD” are displayed. (Ready, Banned, Suspended). Customers pending verification are not on this page, as they are not full members. Banned and Suspended customers are displayed in order to keep them in the system - preventing them from rejoining. </p></li>
+            </ul>
+            <li><p>MetricsDashCard.js</p>
+                <ul>
+                    <li><p>Similar to DashCard, this takes in title and subtitle for the card that is displayed on the Metrics Dashboard. </p></li>
+                </ul>
+           </ul>
+           <p class="font-bold">Hooks</p>
+           <ul>
+            <li><p>InactivityDetector.js</p></li>
+            <ul>
+                <li><p>This component is tracking events on the screen and setting a timer for inactivity. This timer is cleared during any mouse movement, key stroke, or scroll motion. </p></li>
+                <li><p>This is used in Navigation.js to log out a user after a period of inactivity. The user will be redirected to the login. </p></li>
+            </ul>
+            <li><p>useFormContext.js</p></li>
+            <ul>
+                <li><p>Very simple react hook to ensure all pages of the sign up form use the FormContext.js logic. </p></li>
+            </ul>
+           </ul>
+           <p class="font-bold">Navigation</p>
+           <ul>
+            <li><p>EmployeeRoute.js</p></li>
+            <ul>
+                <li><p>If the user is not an employee, or not logged in, this route will redirect them to an Unauthorized screen when they try to access an employee specified route.</p></li>
+                <li><p>If they are a logged in employee, they will navigate to the correct screen.</p></li>
+            </ul>
+            <li><p>ProtectedRoute.js</p></li>
+            <ul>
+                <li><p>If the user is not logged in, or if they are not a customer, this route will redirect them to an Unauthorized screen when they try to access a user page.</p></li>
+                <li><p>If they are a logged in user, they will navigate to the correct screen.</p></li>
+            </ul>
+            <li><p>Navigation.js</p></li>
+            <ul>
+                <li><p>This page handles all Routes within the Browser Router. </p></li>
+                <ul>
+                    <li><p>Groups routes by user type (employee versus user), and sets permissions on employee pages based on role. For example, admins and mechanics have access to fleet information, but managers and customer service reps do not. They would be redirected to the Unauthorized screen if they tried to access that URL. </p></li>
+                </ul>
+                <li><p>Sets the timer for the InactivityDetector, and logs out the user when the screen becomes inactive for the set threshold. </p></li>
+            </ul>
+            <li><p>Layout.js</p></li>
+            <ul>
+                <li><p>Conditionally renders the different global navigations based on if the user is logged in, and if they are an employee or a customer. </p></li>
+                <li><p>Contains the Outlet tag</p></li>
+            </ul>
+           </ul>
+           <p class="font-bold">Signup-Components</p>
+           <ul>
+            <li><p>Form.js</p></li>
+            <ul>
+                <li><p>Create a shell of the form, which contains the FormInputs (CustomerInfo, DriversLicenseInfo, CreditCardInfo).</p></li>
+                <li><p>Handles submit of the data to the API to create the customer</p></li>
+                <ul>
+                    <li><p>Sends requests to the API for all three pages on submit. It waits until all pages are filled out and validated before sending data.</p></li>
+                </ul>
+                <li><p>Uses error validation from FormContext to allow the user to go to the next page and display error messages. </p></li>
+            </ul>
+            <li><p>FormInputs.js</p></li>
+            <ul>
+                <li><p>Uses FormContext to display the correct page</p></li>
+            </ul>
+            <li><p>CustomerInfo.js</p></li>
+            <ul>
+                <li><p>Uses <a class="underline" href="https://mui.com/material-ui/react-text-field/">MUI Textfields</a>. to collect customer information, First Name, Middle Initial, Last Name, Suffix, Address, Email, Phone Number, and Password.</p></li>
+            </ul>
+            <li><p>DriversLicenseInfo.js</p></li>
+            <ul>
+                <li><p>Collects the user’s state and driver’s license number using <a class="underline" href="https://mui.com/material-ui/react-text-field/">MUI Textfields</a> and <a class="undrline" href="https://mui.com/material-ui/react-menu/">Select Menus</a>. Validates the digits in the driver's license number to the state’s standards.</p></li>
+            </ul>
+            <li><p>CreditCardInfo.js</p></li>
+            <ul>
+                <li><p>Collects credit card information, and sends to the backend to set up the card using <a class="undrline" href="https://stripe.com/?utm_campaign=US_en_Search_Brand_Stripe_EXA-20839462206&utm_medium=cpc&utm_source=google&ad_content=683853401230&utm_term=stripe&utm_matchtype=e&utm_adposition=&utm_device=c&gad_source=1&gclid=CjwKCAjwoPOwBhAeEiwAJuXRh2fiTW0ymQIBCUwYuKpRRbyVYFRJhEO5yWFPRV8v1gl8onDls9EpFxoCdRkQAvD_BwE">Stripe</a>. </p></li>
+            </ul>
+            <li><p>ProgressBar.js</p></li>
+            <ul>
+                <li><p>UI Circles to display current progress and current page. </p></li>
+            </ul>
+           </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-primary py-4">
+        <div class="container mx-auto text-white text-center">
+            &copy; Team McQueen Documentation. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>

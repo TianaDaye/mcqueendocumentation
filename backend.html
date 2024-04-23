@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Documentation</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header {
+            background-color: #33adad;
+        }
+
+        header h1 {
+            color: #ffffff;
+        }
+
+        section {
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        section h2 {
+            color: #000180;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            color: #666666;
+        }
+
+        footer {
+            background-color: #33adad;
+            color: #ffffff;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100 text-gray-900">
+    <!-- Header -->
+    <header class="bg-blue-primary py-4">
+        <div class="container mx-auto">
+            <h1 class="text-white text-2xl font-bold text-center">Backend Documentation</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto py-8">
+        <!-- General Guidelines -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">System Architecture</h2>
+            <p class="list-disc ml-4">This system is built on AWS EC2 instances that are running Node.js. A load balancer is used to distribute requests across the EC2 instances, and PM2 is used to manage instances of Node.js on each server. This creates a RESTful API that enables vertical and horizontal scaling. </p>
+        </section>
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">API Load Balancing</h2>
+            <p class="list-disc ml-4">The client will send HTTP requests to the API subdomain of the site. They will be routed through the AWS EC2 load balancer and use a round-robin approach to each of the servers. To scale the application horizontally, the new server would need to be added to the target group to become one of the targets that can handle HTTP requests.</p>
+            <br>
+            <p class="list-disc ml-4">
+                The application could be scaled vertically by increasing the resources of the EC2 instances. As long as one of the instances stays online to handle requests, another one could be taken offline to increase CPUs and RAM. Since Node.js has a single-threaded runtime, it will not automatically take advantage of the new CPU cores. The way to deal with this is to start multiple instances of Node.js on each server such that the number of Node.js instances matches the number of CPU cores. To handle this, this would require an internal load-balancing mechanism and the system PM2, or Process Manager 2. It allows multiple instances of a Node.js application to be running at the same time, and it will manage load-balancing and performance monitoring. It also allows the Node.js application to be run as a service and will restart the application if it fails.
+            </p>
+        </section>
+        <section>
+            <h2 class="text-xl font-semibold text-blue-primary">Serving Static Files</h2>
+            <p class="list-disc ml-4">
+                Static files such as the HTML, CSS, and JS will be served through the AWS CDN named Cloudfront. The files will be stored in an S3 bucket and connected to Cloudfront to enable high availability and performance of the application. It allows the backend API to be independent of serving the static files and will take advantage of the caching mechanism built into the service to ensure that the user is always getting the files from the fastest server available. 
+            </p>
+        </section>
+        <section>
+            <h2 class="text-xl font-semibold text-blue-primary">GyroCar Reservation Logic</h2>
+            <a class="underline" href="https://drive.google.com/file/d/1hh-CD1X6e9EhwC_BWx3RT1emZpXF58-J/view?usp=sharing">View Here</a>
+        </section>
+        <section>
+            <h2 class="text-xl font-semibold text-blue-primary">Cloud Infrastructure</h2>
+            <a class="underline" href="https://drive.google.com/file/d/1vgjziPRWX1kKXhOc0t2jCDEcox6xE4Oe/view?usp=sharing">View Here</a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-primary py-4">
+        <div class="container mx-auto text-white text-center">
+            &copy; Team McQueen Documentation. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>

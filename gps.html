@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS and Firebase Documentation</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header {
+            background-color: #000180;
+        }
+
+        header h1 {
+            color: #ffffff;
+        }
+
+        section {
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        section h2 {
+            color: #000180;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            color: #666666;
+        }
+
+        footer {
+            background-color: #000180;
+            color: #ffffff;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100 text-gray-900">
+    <!-- Header -->
+    <header class="bg-blue-primary py-4">
+        <div class="container mx-auto">
+            <h1 class="text-white text-2xl font-bold text-center">GPS and Firebase Documentation</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto py-8">
+        <!-- General Guidelines -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">Firebase Realtime Database</h2>
+            <p class="list-disc ml-4"><a class="underline" href="https://firebase.google.com/docs/database">Firebase Realtime Database</a> - Documentation on Firebase</p>
+            <br>
+            <p class="list-disc ml-4">A Firebase Realtime Database is a cloud hosted database that stores JSON data and synchronizes it in real time to all connected clients. Unlike an HTTP request, whenever data changes, any connected device will receive the update in real time. </p>
+            <br>
+            <p class="list-disc ml-4">The GyroGoGo React application is connected to our GyroGoGo Car Locations Firebase Database to track our Gyrocars in real time. Due to real time data synchronization, each Gyrocar will be connected to the Firebase, along with the React application. All devices will have up to date location information, without delay. Firebase synchronization mechanism minimizes latency, making it ideal for tracking moving objects. It also scales automatically, with the ability to track anywhere from a few devices, to thousands of devices.</p>
+            <br>
+            <p class="list-disc ml-4">Our database contains a list of all cars, with their associated carID and coordinate location. The carID is used to connect our Firebase location information with our more static car and reservation data from our AWS-hosted SQL database. For example, when a car is added through our GyroGoGo React App, that carID is added to both the Firebase and SQL Database. </p>
+            <br>
+            <p class="list-disc ml-4">This database is tracking the car’s real location, and the SQL database tracks the cars ‘expected’ location, based on reservation and rental status. The actual and expected locations can be compared to ensure the car is in the right place, at the right time. </p>
+            <img src="/assets/Screenshot 2024-04-23 at 1.57.24 PM.png" alt="Customer" width="500" height="500">
+        </section>
+        <section>
+            <h2 class="text-xl font-semibold text-blue-primary">Testing -  iOS Tracking App and GPX Simulation</h2>
+            <p class="list-disc ml-4"> Since the Gyrocars do not actually exist, we needed to simulate a moving car in order to test our location tracking and updates. Instead of connecting a real car GPS system to the Firebase, we simulated a car using an iPhone.</p>
+        </section>
+        <section>
+            <h2 class="text-xl font-semibold text-blue-primary">Test Car App</h2>
+            <a class="underline" href="https://developer.apple.com/documentation/corelocation/getting_the_current_location_of_a_device">Getting the current location of a device | Apple Developer Documentation </a>
+            <p class="list-disc ml-4"> Current location can be easily accessed through iOS CoreLocation on XCode. We created an app that constantly display’s the phone’s current coordinates. These coordinates update in live time. Each time there is a location change, the iOS app sends the coordinates to Firebase, based on the specified CarID. For testing purposes, we connected the app to Car 3.</p>
+        </section>
+        <section>
+            <h2 class="text-xl font-semibold text-blue-primary">Spoofing a Route</h2>
+            <a class="underline" href="https://developer.apple.com/documentation/xcode/simulating-location-in-tests">Simulating location in tests | Apple Developer Documentation </a>
+            <p class="list-disc ml-4">To test a car moving along a reservation path, we utilized GPX files in our app.</p>
+            <br>
+            <p class="list-disc ml-4">GPX files can simulate location data in an app for development and testing purposes. GPX stands for GPS Exchange Format, and they store location data, including latitude, longitude, altitude, and timestamps. They can simulate user location moving between various waypoints, or coordinate points, in a designated amount of time.</p>
+            <br>
+            <p class="list-disc ml-4">In our test app, there is a GPX file moving from one GyroGoGo station to another station. This simulated route will continuously loop while simulating. When this simulation is started, the iPhone thinks it is moving along this route, and it continuously updates it’s location and sends coordinates to Firebase. </p>
+        </section>
+        <section>
+            <h2 class="text-xl font-semibold text-blue-primary">Displaying the Car Location</h2>
+            <p class="list-disc ml-4">In the Fleet Management page, there is a table displaying all car information, including the coordinates. As the coordinates change for Car 3 during location simulation, the coordinates update in real time in this table. </p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-primary py-4">
+        <div class="container mx-auto text-white text-center">
+            &copy; Team McQueen Documentation. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>
