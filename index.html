@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GyroGoGo Documentation</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
     <!-- Loading Page -->
@@ -16,22 +15,22 @@
     <!-- Header -->
     <header class="bg-blue-primary py-4">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="hamburger-menu" onclick="toggleMenu()">
-                <span class="menu-bar"></span>
-                <span class="menu-bar"></span>
-                <span class="menu-bar"></span>
+            <div class="hamburger-menu lg:hidden" onclick="toggleMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
+                    <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 100 2h12a1 1 0 100-2H4zm0 4a1 1 0 110-2h12a1 1 0 110 2H4z" clip-rule="evenodd" />
+                </svg>
             </div>
             <div>
                 <h1>Team McQueen Documentation</h1>
             </div>
-            <div class="search-bar">
+            <div class="search-bar hidden lg:block">
                 <input type="search" placeholder="Search">
             </div>
         </div>
     </header>
 
     <!-- Sidebar -->
-    <aside class="sticky" id="sidebar">
+    <aside class="sticky lg:block" id="sidebar">
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
@@ -40,8 +39,10 @@
                 <li><a href="#database">Database</a></li>
                 <li><a href="#endpoints">Endpoints</a></li>
                 <li><a href="#gps">GPS and Firebase</a></li>
+            </ul>
+        </nav>
+    </aside>
 
-    <link rel="stylesheet" href="styles.css">
     <style>
         /* Header Layout */
         header {
@@ -84,6 +85,7 @@
         }
 
         /* Main Content Layout */
+        
         main {
             display: grid;
             grid-template-columns: 1fr 200px;
@@ -184,7 +186,7 @@
     </aside>
 
     <!-- Main Content -->
-    <main>
+    <main class="px-4 py-8">
         <h2 id="home" class="font-bold">Purpose</h2>
         <br>
         <p>The purpose of this Gyrocar scheduling system is to establish a comprehensive system for Gyrogogo, enabling efficient monitoring of our single-passenger gyrocar fleet's location, availability, and usage. The core objectives include acquiring and securely documenting customer data, facilitating rentals from our fleet, and ensuring proper maintenance through continuous tracking of vehicle locations and usage patterns.</p>
@@ -235,7 +237,21 @@
 
         function toggleMenu() {
             var sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('nav-active');
+            sidebar.classList.toggle('hidden');
+        }
+
+        function search() {
+            var searchTerm = document.querySelector('.search-bar input').value.toLowerCase();
+            var content = document.querySelector('main').innerHTML.toLowerCase();
+            if (searchTerm.trim() === '') {
+                // If the search term is empty, show all content
+                document.querySelector('main').innerHTML = content;
+            } else {
+                // Highlight the search term in content
+                var regex = new RegExp(searchTerm, 'g');
+                var highlightedContent = content.replace(regex, '<span class="highlight">$&</span>');
+                document.querySelector('main').innerHTML = highlightedContent;
+            }
         }
     </script>
 </body>
