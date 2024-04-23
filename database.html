@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Documentation</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header {
+            background-color: #000180;
+        }
+
+        header h1 {
+            color: #ffffff;
+        }
+
+        section {
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        section h2 {
+            color: #000180;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            color: #666666;
+        }
+
+        footer {
+            background-color: #000180;
+            color: #ffffff;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100 text-gray-900">
+    <!-- Header -->
+    <header class="bg-blue-primary py-4">
+        <div class="container mx-auto">
+            <h1 class="text-white text-2xl font-bold text-center">Database Documentation</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto py-8">
+        <!-- General Guidelines -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">Hosting</h2>
+            <p class="list-disc ml-4">The database for the GyroCar reservation consists of a single MySQL database hosted on AWS. The database is available in 2 AWS availability zones to ensure high availability. It is currently setup to have daily snapshots and weekly backups. The database is not publicly accessible and can only be accessed through the backend subnet in AWS. The database resources can be scaled vertically as usage of the site grows.</p>
+        </section>
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold text-blue-primary">Schema</h2>
+            <p class="list-disc ml-4">The database schema is fully normalized to third normal form to limit data redundancy. The full ER diagram can be found <a class="underline" href="https://drive.google.com/file/d/1681LnZr3R1PHh0I5AVbes6oYLOEnl3De/view?usp=drive_link">here</a>>. The schema was developed in MySQL workbench, and the MWB file has been included so that the schema can easily be adjusted as needed. </p>
+        </section>
+        <section>
+            <h2 class="text-xl font-semibold text-blue-primary">Data Dictionary</h2>
+            <a class="underline" href="https://docs.google.com/spreadsheets/d/1oAGbUoG90jJSCTyEEe_QZ-aP-pnn7TVpmm9hjo0Y8x8/edit?usp=sharing">View Here</a>
+        </section>
+        <section>
+            <img src="/assets/Customer.png" alt="Customer" width="500" height="600">
+            <img src="/assets/Employee Management.png" alt="Customer" width="500" height="600">
+            <img src="/assets/Requests.png" alt="Customer" width="500" height="600">
+            <img src="/assets/Reservation and Payment.png" alt="Customer" width="500" height="600">
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-primary py-4">
+        <div class="container mx-auto text-white text-center">
+            &copy; Team McQueen Documentation. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>
