@@ -227,20 +227,20 @@
         function search() {
             var searchTerm = document.querySelector('.search-bar input').value.toLowerCase();
             var sections = document.querySelectorAll('main section');
-        
+            
             sections.forEach(function(section) {
-                var content = section.innerHTML;
-                var regex = new RegExp(searchTerm, 'gi');
-        
-                // Remove any existing highlighting
-                var unhighlightedContent = content.replace(/<span class="highlight">(.*?)<\/span>/g, '$1');
-        
-                // Apply highlighting to matched terms
-                var highlightedContent = unhighlightedContent.replace(regex, '<span class="highlight">$&</span>');
-        
-                section.innerHTML = highlightedContent;
+                var nodes = section.childNodes;
+                
+                nodes.forEach(function(node) {
+                    if (node.nodeType === Node.TEXT_NODE) {
+                        var content = node.textContent;
+                        var regex = new RegExp(searchTerm, 'gi');
+                        var highlightedContent = content.replace(regex, '<span class="highlight">$&</span>');
+                        node.parentNode.innerHTML = highlightedContent;
+                    }
+                });
             });
-        }
+        }        
               
 
         // Highlight active section in the sidebar
