@@ -37,10 +37,9 @@
         /* Main Content Layout */
         main {
             display: grid;
-            grid-template-columns: 1fr 200px;
-            grid-template-rows: auto auto;
+            grid-template-columns: 1fr minmax(0, 200px); /* Changed to minmax for responsive behavior */
+            grid-template-rows: auto; /* Adjusted grid-template-rows */
             grid-template-areas:
-                "content toc"
                 "content toc";
             padding: 20px;
             margin-top: 100px; /* Adjusted to accommodate the header */
