@@ -13,23 +13,31 @@
             grid-template-columns: auto 1fr auto;
             background-color: #33adad; 
             padding: 20px;
-            text-align: center;
+            text-align: left;
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 1000; /* Ensure header is above other content */
-        }
-        .search-bar {
-            grid-column: 3 / 3;
-            margin-right: 100px; /* Increased margin */
-            padding-left: 500px;
+            z-index: 1000; 
         }
 
+        .logo img {
+            width: fit-content; 
+            height: fit-content;
+            padding-left: 500px;
+            margin-top: 1px;
+        }
+        /*
+        .search-bar {
+            grid-column: 3 / 3;
+            margin-right: 100px; /* Increased margin 
+            padding-left: 500px;
+        }
+        
         .search-bar input[type="search"] {
             border-radius: 20px; 
             padding-left: 5px;
         }
-
+        */
         /* Main Content Layout */
         main {
             display: grid;
@@ -142,9 +150,7 @@
         <div class="container mx-auto flex justify-between items-center">
             <div class="logo">
                 <h1>Team McQueen Documentation</h1>
-            </div>
-            <div class="search-bar hidden lg:block">
-                <input type="search" placeholder="Search">
+                <img class="logo1" src="#" alt="logo">
             </div>
         </div>
     </header>
@@ -153,12 +159,12 @@
     <aside class="sticky lg:block" id="sidebar">
         <nav>
             <ul>
-                <li><a href="https://tianadaye.github.io/mcqueendocumentation/">Home</a></li>
-                <li><a href="https://tianadaye.github.io/mcqueendocumentation/frontend.html">Frontend</a></li>
-                <li><a href="https://tianadaye.github.io/mcqueendocumentation/database.html">Database</a></li>
-                <li><a href="https://tianadaye.github.io/mcqueendocumentation/backend.html">Backend</a></li>
-                <li><a href="https://tianadaye.github.io/mcqueendocumentation/endpoints.html">Endpoints</a></li>
-                <li><a href="https://tianadaye.github.io/mcqueendocumentation/gps.html">GPS and Firebased Documentation</a></li>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/frontend.html">Frontend</a></li>
+                <li><a href="/database.html">Database</a></li>
+                <li><a href="/backend.html">Backend</a></li>
+                <li><a href="/endpoints.html">Endpoints</a></li>
+                <li><a href="/gps.html">GPS and Firebased Documentation</a></li>
             </ul>
         </nav>
     </aside>
@@ -213,48 +219,68 @@
 
     <script>
         window.addEventListener('load', function () {
-            setTimeout(function() {
+            setTimeout(function () {
                 var loadingPage = document.querySelector('.loading-page');
                 loadingPage.style.display = 'none';
-            }, 1000); 
+            }, 1000);
         });
-
+        
         function toggleMenu() {
             var sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('hidden');
         }
-
+        
+        /*
         function search() {
             var searchTerm = document.querySelector('.search-bar input').value.toLowerCase();
             var sections = document.querySelectorAll('main section');
-            
-            sections.forEach(function(section) {
+            var found = false; // Flag to check if the search term is found
+        
+            sections.forEach(function (section) {
                 var nodes = section.childNodes;
-                
-                nodes.forEach(function(node) {
+        
+                nodes.forEach(function (node) {
                     if (node.nodeType === Node.TEXT_NODE) {
                         var content = node.textContent;
                         var regex = new RegExp(searchTerm, 'gi');
+        
+                        // Check if the search term is found in the content
+                        if (content.toLowerCase().includes(searchTerm) && !found) {
+                            // Scroll to the section
+                            section.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                            found = true; // Update the flag
+                        }
+        
+                        // Highlight the search term
                         var highlightedContent = content.replace(regex, '<span class="highlight">$&</span>');
                         node.parentNode.innerHTML = highlightedContent;
                     }
                 });
             });
-        }        
-              
-
+        }
+       
+        // Handle keydown event on search input
+        document.querySelector('.search-bar input').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                search();
+            }
+        });
+         */
         // Highlight active section in the sidebar
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             var sections = document.querySelectorAll('main h2');
             var scrollPosition = window.scrollY;
-
-            sections.forEach(function(section, index) {
+        
+            sections.forEach(function (section, index) {
                 var top = section.offsetTop - 200; // Adjusted for header
                 var bottom = top + section.clientHeight;
-
+        
                 if (scrollPosition >= top && scrollPosition < bottom) {
                     // Section is in view
-                    document.querySelectorAll('nav ul li a').forEach(function(link) {
+                    document.querySelectorAll('nav ul li a').forEach(function (link) {
                         link.classList.remove('active');
                     });
                     document.querySelectorAll('nav ul li a')[index].classList.add('active');
